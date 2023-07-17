@@ -3,7 +3,7 @@ const axios = require('axios')
 
 cron.schedule('* * * * *', () => {
   const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false })
-  console.log(`Cron job running every minute. Current time: ${currentTime}`)
+  console.log(`Cron job is running every minute. Current time: ${currentTime}`)
 })
 
 // const DEV_SHOP_ID = 'edadafdf-c213-462b-910a-179c18d3a7cd'
