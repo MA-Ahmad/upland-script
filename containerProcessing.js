@@ -1,9 +1,9 @@
 const cron = require('node-cron')
 const axios = require('axios')
 
-cron.schedule('* * * * *', () => {
+cron.schedule('0 */3 * * *', () => {
   const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false })
-  console.log(`Cron job is running every minute. Current time: ${currentTime}`)
+  console.log(`Cron job running every 3 hours. Current time: ${currentTime}`)
 })
 
 // const DEV_SHOP_ID = 'edadafdf-c213-462b-910a-179c18d3a7cd'
