@@ -10,7 +10,11 @@ const API_URL =
   'https://2amhjh2kla.execute-api.us-west-1.amazonaws.com/prod/backend'
 const SECRET_KEY = '25599550-2686-4879-b83c-ee5ce88cff00'
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 9 * * *', async () => {
+  const currentDate = new Date()
+  const currentDateTime = currentDate.toLocaleString()
+  console.log(`===== Cron job running date and time: ${currentDateTime} =====`)
+
   try {
     const response = await axios.post(API_URL, {
       type: 'current_escrow_timestamp',
@@ -29,9 +33,9 @@ cron.schedule('* * * * *', async () => {
         (currentDate - createdDate) / (1000 * 60 * 60 * 24)
       )
 
-      console.log('response', createdDate, currentDate, diffInDays)
+      console.log(`=== Created date === ${createdDate}`)
       // Check if the object is 10 days old and has an active status
-      if (diffInDays >= 0) {
+      if (diffInDays >= 2) {
         // Call the resolve API
         try {
           const resolveResponse = await axios.post(API_URL, {
